@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="x-UA-compatible" content="if=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<style>
+		*{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: arial, helvetica, sans-serif;
+}
+html, body{
+	background-color: black;
+	min-height: 50% !important;
+	width: 50%
+
+}
+.total{
+	color:white;
+	text-align:end;
+	font-size: 100px;
+	margin:10px;
+	margin-right: 20px
+
+}
+.container{
+	width: 100%;
+	height: 110vh;
+	display: flex;
+	margin-top:100px;
+	border:1px solid #717377;
+	border-radius: 50px;
+	background: transparent;
+	box-shadow: 0px 3px 15px rgba(113, 115, 119, 15);
+	margin-left: 500px;
+}
+input{
+	width: 100%;
+	border: none;
+	padding: 40px;
+	margin: 10px;
+	background: transparent;
+	box-shadow: 0px 3px 15px rgba(84, 84, 84, 0.6);
+	font-size: 60px;
+	text-align: right;
+	color: white;
+}
+.buttons{
+	display: grid;
+	grid-template-columns: 25% 25% 25% 25%; 
+}
+.item{
+	height: 100px;
+	font-size: 40px;
+	border-radius: 100%;
+	margin: 1px;
+}
+.item-grey{
+	background-color: rgb(132, 132,132 );
+	border: 0;
+}
+.item-orange{
+	background-color: #ff8431;
+	border: 0;
+}
+.operator{
+	color: #6dee0a;
+	font-size: 45px;
+	border-radius: 30px;
+}
+
+	</style>
+	<title>calculator</title>
+</head>
+<body>
+	<div class="container">
+		<div class="total">
+			<input  type="text" placeholder="0" id="inputbox">
+			<div class="buttons">
+				<button class="item item-grey">c</button>
+				<button class="operator">+/-</button>
+				<button class="operator">%</button>
+				<button class="operator">/</button>
+				<button class="item">7</button>
+				<button class="item">8</button>
+				<button class="item">9</button>
+				<button class="operator">*</button>
+				<button class="item">4</button>
+				<button class="item">5</button>
+				<button class="item">6</button>
+				<button class="operator">-</button>
+				<button class="item">1</button>
+				<button class="item">2</button>
+				<button class="item">3</button>
+				<button class="operator">+</button>
+				<button class="item">0</button>
+				<button class="item">.</button>
+				<button class="item item-orange">DEL</button>
+				<button class="item item-orange">=</button>
+			</div>
+		</div>
+	</div>
+<!--javscritpt-->
+<script type="text/javascript">
+	let input = document.getElementById('inputbox');
+	let buttons = document.querySelectorAll
+	('button');
+	let string = "";
+	let arr = Array.from(buttons);
+	arr.forEach(button =>{
+		button.addEventListener('click', (e) =>{
+			if(e.target.innerHTML == '='){
+				string = eval(string);
+				input.value = string;
+			}
+			else if(e.target.innerHTML == 'c'){
+				string = "";
+				input.value = string;
+			}
+			else if (e.target.innerHTML == 'DEL'){
+				string = string.substring(0, string.length-1);
+				input.value = string;
+			}
+			else{
+				string += e.target.innerHTML;
+				input.value = string;
+			}
+		})
+	})
+</script>
+</body>
+</html>
